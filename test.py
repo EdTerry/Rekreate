@@ -13,24 +13,25 @@ w=640
 h=480
 
 #Reference Images Display name & Original Name
-#ReferenceImages = ["ArrowL.jpg","ArrowR.jpg","ArrowT.jpg","Ball.jpg","Go.jpg","Stop.jpg90","Turn Around","Search for Ball","Start..","Stop!"]
+#ReferenceImages = ["ArrowL.jpg","ArrowR.jpg","ArrowT.jpg","Ball.jpg","Go.jpg","Stop.jpg"]
+#ReferenceTitles = ["Turn Left 90","Turn Right 90","Turn Around","Search for Ball","Start..","Stop!"]
 
 #define class for References Images
-class Symbol:
-    def __init__(self):
-        self.img = 0
-        self.name = 0
+#class Symbol:
+#    def _init_(self):
+#        self.img = 0
+#        self.name = 0
 
 #define class instances (6 objects for 6 different images)
-symbol= [Symbol() for i in range(6)]
+#symbol= [Symbol() for i in range(6)]
 
 
 
-def readRefImages():
-    for count in range(6):
-        image = cv2.imread(ReferenceImages[count], cv2.COLOR_BGR2GRAY)
-        symbol[count].img = cv2.resize(image,(w/2,h/2),interpolation = cv2.INTER_AREA)
-        symbol[count].name = ReferenceTitles[count]
+#def readRefImages():
+#    for count in range(6):
+#        image = cv2.imread(test.jpg, cv2.COLOR_BGR2GRAY)
+#        symbol[count].img = cv2.resize(image,(w/2,h/2),interpolation = cv2.INTER_AREA)
+#        symbol[count].name = ReferenceTitles[count]
         #cv2.imshow(symbol[count].name,symbol[count].img);
 
 
@@ -121,7 +122,7 @@ def main():
 
 
     # initialize the camera and grab a reference to the raw camera capture
-    video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture(1)
 
     #Windows to display frames
     cv2.namedWindow("Main Frame", cv2.WINDOW_AUTOSIZE)
@@ -130,7 +131,8 @@ def main():
     cv2.namedWindow("Contours", cv2.WINDOW_AUTOSIZE)
 
     #Read all the reference images
-    readRefImages()
+    #readRefImages()
+    imgFile = cv2.imread('test.jpg')
 
     # capture frames from the camera
     while True:
@@ -156,7 +158,7 @@ def main():
                                     warped_eq = resize_and_threshold_warped(warped)
 
 
-                                    for i in range(6):
+                                    for i in range(1):
                                         diffImg = cv2.bitwise_xor(warped_eq, symbol[i].img)
                                         diff = cv2.countNonZero(diffImg);
 
@@ -183,7 +185,6 @@ def main():
 
     video.release()
     cv2.destroyAllWindows()
-
 
 #Run Main
 if __name__ == "__main__" :
