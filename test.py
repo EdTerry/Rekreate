@@ -9,8 +9,8 @@ minSquareArea = 5000
 match = -1
 
 #Frame width & Height
-w=640
-h=480
+w=340
+h=270
 
 #Reference Images Display name & Original Name
 #ReferenceImages = ["ArrowL.jpg","ArrowR.jpg","ArrowT.jpg","Ball.jpg","Go.jpg","Stop.jpg"]
