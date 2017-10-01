@@ -122,7 +122,7 @@ def main():
 
 
     # initialize the camera and grab a reference to the raw camera capture
-    video = cv2.VideoCapture(1)
+    video = cv2.VideoCapture(0)
 
     #Windows to display frames
     cv2.namedWindow("Main Frame", cv2.WINDOW_AUTOSIZE)
