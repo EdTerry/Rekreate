@@ -9,29 +9,29 @@ minSquareArea = 5000
 match = -1
 
 #Frame width & Height
-w=640
-h=480
+w=340
+h=270
 
 #Reference Images Display name & Original Name
-#ReferenceImages = ["ArrowL.jpg","ArrowR.jpg","ArrowT.jpg","Ball.jpg","Go.jpg","Stop.jpg"]
-#ReferenceTitles = ["Turn Left 90","Turn Right 90","Turn Around","Search for Ball","Start..","Stop!"]
+ReferenceTitles = ["test"]
+ReferenceImages = ["test.jpg"]
 
 #define class for References Images
-#class Symbol:
-#    def _init_(self):
-#        self.img = 0
-#        self.name = 0
+class Symbol:
+    def __init__(self):
+        self.img = 0
+        self.name = 0
 
 #define class instances (6 objects for 6 different images)
-#symbol= [Symbol() for i in range(6)]
+symbol= [Symbol() for i in range(1)]
 
 
 
-#def readRefImages():
-#    for count in range(6):
-#        image = cv2.imread(test.jpg, cv2.COLOR_BGR2GRAY)
-#        symbol[count].img = cv2.resize(image,(w/2,h/2),interpolation = cv2.INTER_AREA)
-#        symbol[count].name = ReferenceTitles[count]
+def readRefImages():
+    #for count in range(6):
+        image = cv2.imread(ReferenceImages[0], cv2.COLOR_BGR2GRAY)
+        symbol[0].img = cv2.resize(image,(int(w/2),int(h/2)),interpolation = cv2.INTER_AREA)
+        symbol[0].name = ReferenceTitles[0]
         #cv2.imshow(symbol[count].name,symbol[count].img);
 
 
@@ -75,7 +75,7 @@ def four_point_transform(image, pts):
 
         # compute the perspective transform matrix and then apply it
         M = cv2.getPerspectiveTransform(rect, dst)
-        warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
+        warped = cv2.warpPerspective(image, M, (int(maxWidth), int(maxHeight)))
 
         # return the warped image
         return warped
@@ -131,8 +131,7 @@ def main():
     cv2.namedWindow("Contours", cv2.WINDOW_AUTOSIZE)
 
     #Read all the reference images
-    #readRefImages()
-    imgFile = cv2.imread('test.jpg')
+    readRefImages()
 
     # capture frames from the camera
     while True:
@@ -185,6 +184,7 @@ def main():
 
     video.release()
     cv2.destroyAllWindows()
+
 
 #Run Main
 if __name__ == "__main__" :
