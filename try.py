@@ -3,8 +3,12 @@ import cv2
 from matplotlib import pyplot as plt
 
 #cap = cv2.VideoCapture(0)
+#k = cap.read()
+
+
+#cap = cv2.VideoCapture(0)
 img1 = cv2.imread('test.jpg',0)
-#img2 = cv2.imread(cap,0)
+#img2 = cv2.imshow(k,0)
 img2 = cv2.imread('cam_img.jpg',0)
 
 
